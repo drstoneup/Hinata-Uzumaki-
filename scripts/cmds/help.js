@@ -18,26 +18,32 @@ module.exports = {
   langs: {
     en: {
       customHelpMenu: `
-❯ ❲ 🦋 ❳ 𝗛𝗶 𝗡𝗮 𝗧𝗮
-━━━━━━━━━━━━━━ ✅
-🧩 𝗕𝗮𝘀𝗶𝗰 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀
+❯ ❲ 🦋 ❳ Hi Na Ta
+━━━━━━━━━━━━━━━━━━ ✅
 
-💎 .daily       💰 .balance       🎁 .gift
-🧰 .briefcase <action> [args]
-🎉 .quiz [subject|guide|hint]
-🧩 .wordgame [difficulty|guide|hint]
-🌱 .garden [subcommand]
-🛒 .buy <command>         🌹 .rosashop
-🏰 .skyrise <command> [args]
-💱 .trade [list|buy|sell|cancel]
+🧩 Basic Commands:
+
+💎 .daily  
+💰 .balance  
+🎁 .gift  
+🧰 .briefcase <action> [args]  
+🎉 .quiz [subject|guide|hint]  
+🧩 .wordgame [difficulty|guide|hint]  
+🌱 .garden [subcommand]  
+🛒 .buy <command>  
+🌹 .rosashop  
+🏰 .skyrise <command> [args]  
+💱 .trade [list|buy|sell|cancel]  
 ⚔️ .arena [pet] [--ai]
 
-➥ View all commands: .help all
-➥ View basics only: .help basics
-➥ View by page: .help <page>
+━━━━━━━━━━━━━━━━━━
 
-━━━━━━━━ ✕ ━━━━━━━ ✦
-🛠️ Developed by Arafat Hassan 🎀`
+➥ .help all – Show all commands  
+➥ .help basics – Show only basics  
+➥ .help <page> – View help by page
+
+━━━━━━━━━━━━ ✕ ━━━━━━━━━━━ ✦
+Developed by: Arafat Hassan 🎀`
     }
   },
 
@@ -48,7 +54,7 @@ module.exports = {
     if (!sub || sub === "basics" || sub === "all" || !isNaN(sub)) {
       return message.reply(lang);
     } else {
-      return message.reply(`❌ Command "${args[0]}" not found.\n📌 Use .help to view available commands.`);
+      return message.reply(`❌ Command "${args[0]}" not found.\nUse .help to view available commands.`);
     }
   }
 };
