@@ -18,32 +18,21 @@ module.exports = {
   langs: {
     en: {
       customHelpMenu: `
-❯ ❲ 🦋 ❳ Hi Na Ta
-━━━━━━━━━━━━━━━━━━ ✅
+❯ ❲ 🦋 ❳ 𝗛𝗶 𝗡𝗮 𝗧𝗮
+━━━━━━━━━━━━━━ 
+✅𝗕𝗮𝘀𝗶𝗰 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀
 
-🧩 Basic Commands:
+💎 .daily           🧩 .wordgame 
+💰 .balance     🛒 .buy 
+🎁 .gift             🌹 .rosashop
+🧰 .briefcase   🏰 .skyrise
+🎉 .quiz             ⚔️ .arena
 
-💎 .daily  
-💰 .balance  
-🎁 .gift  
-🧰 .briefcase <action> [args]  
-🎉 .quiz [subject|guide|hint]  
-🧩 .wordgame [difficulty|guide|hint]  
-🌱 .garden [subcommand]  
-🛒 .buy <command>  
-🌹 .rosashop  
-🏰 .skyrise <command> [args]  
-💱 .trade [list|buy|sell|cancel]  
-⚔️ .arena [pet] [--ai]
+➥Total command : 230
+➥ View by page: .help <page>
 
-━━━━━━━━━━━━━━━━━━
-
-➥ .help all – Show all commands  
-➥ .help basics – Show only basics  
-➥ .help <page> – View help by page
-
-━━━━━━━━━━━━ ✕ ━━━━━━━━━━━ ✦
-Developed by: Arafat Hassan 🎀`
+━━━━━━━━ ✕
+🛠️ Developed by Arafat Hassan 🎀`
     }
   },
 
@@ -54,7 +43,7 @@ Developed by: Arafat Hassan 🎀`
     if (!sub || sub === "basics" || sub === "all" || !isNaN(sub)) {
       return message.reply(lang);
     } else {
-      return message.reply(`❌ Command "${args[0]}" not found.\nUse .help to view available commands.`);
+      return message.reply(`❌ Command "${args[0]}" not found.\n📌 Use .help to view available commands.`);
     }
   }
 };
