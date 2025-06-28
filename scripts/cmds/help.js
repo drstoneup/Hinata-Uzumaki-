@@ -1,11 +1,54 @@
-module.exports = { config: { name: "help", version: "2.0", author: "Arafat Hassan", countDown: 5, role: 0, description: { en: "Displays the list of basic commands in a stylish format." }, category: "info", guide: { en: "{pn}" }, priority: 1 },
+module.exports = {
+  config: {
+    name: "help",
+    version: "2.0-hinata",
+    author: "Arafat Hassan",
+    countDown: 5,
+    role: 0,
+    description: {
+      en: "Custom stylized help menu for HinataUzumaki bot"
+    },
+    category: "info",
+    guide: {
+      en: "{pn} [all | basics | <page>]"
+    },
+    priority: 1
+  },
 
-onStart: async function ({ message }) { const helpMenu = ` ❯  ❲ 🦋 ❳  𝗛𝗶 Na Ta ━━━━━━━━━━━━━━━ ✅ 𝗕𝗮𝘀𝗶𝗰 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀 💎 .daily 💰 .balance 🎁 .gift 🧰 .briefcase <action> [args] 🎉 .quiz [subject|guide|hint] 🧩 .wordgame [difficulty|guide|hint] 🌱 .garden [subcommand] 🛒 .buy <command> 🌹  rosashop 🏰 .skyrise <command> [args] 🛒 .trade [list/buy/sell/cancel] ⚔️ .arena [pet] [--ai]
+  langs: {
+    en: {
+      customHelpMenu: `
+❯ ❲ 🦋 ❳ 𝗛𝗶 𝗡𝗮 𝗧𝗮
+━━━━━━━━━━━━━━ ✅
+🧩 𝗕𝗮𝘀𝗶𝗰 𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀
 
-➥ Try to Explore more commands! ➥ View by page: .help
+💎 .daily       💰 .balance       🎁 .gift
+🧰 .briefcase <action> [args]
+🎉 .quiz [subject|guide|hint]
+🧩 .wordgame [difficulty|guide|hint]
+🌱 .garden [subcommand]
+🛒 .buy <command>         🌹 .rosashop
+🏰 .skyrise <command> [args]
+💱 .trade [list|buy|sell|cancel]
+⚔️ .arena [pet] [--ai]
 
-━━━━━━━ ✕ ━━━━━━ ✦ Developed by Arafat Hassan 🎀 `;
+➥ View all commands: .help all
+➥ View basics only: .help basics
+➥ View by page: .help <page>
 
-message.reply(helpMenu);
+━━━━━━━━ ✕ ━━━━━━━ ✦
+🛠️ Developed by Arafat Hassan 🎀`
+    }
+  },
 
-} };
+  onStart: async function ({ message, args, getLang }) {
+    const sub = args[0]?.toLowerCase();
+    const lang = getLang("customHelpMenu");
+
+    if (!sub || sub === "basics" || sub === "all" || !isNaN(sub)) {
+      return message.reply(lang);
+    } else {
+      return message.reply(`❌ Command "${args[0]}" not found.\n📌 Use .help to view available commands.`);
+    }
+  }
+};
