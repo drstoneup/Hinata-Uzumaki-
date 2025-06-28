@@ -109,15 +109,24 @@ module.exports = {
   onChat: async function ({ event, message, threadsData }) {
     const globalPrefix = global.GoatBot.config.prefix;
     const threadPrefix = await threadsData.get(event.threadID, "data.prefix") || globalPrefix;
+    const uptime = process.uptime();
+    const hours = Math.floor(uptime / 3600);
+    const minutes = Math.floor((uptime % 3600) / 60);
+    const seconds = Math.floor(uptime % 60);
+    const currentTime = new Date().toLocaleTimeString("en-US", { hour12: true });
 
     if (event.body && event.body.toLowerCase() === "prefix") {
       return message.reply({
         body:
-          "╔══『 𝐏𝐑𝐄𝐅𝐈𝐗 』══╗\n"
-        + `║ 🌍 System : ${globalPrefix}\n`
-        + `║ 💬 Chatbox : ${threadPrefix}\n`
-        + `║ ➤ ${threadPrefix}help to see all available cmds , Admin :Arafat\n`
-        + "╚═══════════════╝",
+          "╔════[PREFIX INFO]════╗\n"
+        + `➥ 🌍 Global: ${globalPrefix}\n`
+        + `➥ 💬 Chat: ${threadPrefix}\n`
+        + `➥ 📘 Help: ${threadPrefix}help\n`
+        + `➥ 🕒 Time: ${currentTime}\n`
+        + `➥ ⏳ Uptime: ${hours}h ${minutes}m ${seconds}s\n`
+        + `➥ 🧑 Your ID: ${event.senderID}\n`
+        + `➥ ✍️ Creator: Arafat Hassan\n`
+        + "╚════════════════════╝",
         attachment: await utils.getStreamFromURL("https://files.catbox.moe/ilgbyd.jpg")
       });
     }
