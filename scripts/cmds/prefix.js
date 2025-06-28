@@ -31,12 +31,37 @@ module.exports = {
 
   langs: {
     en: {
-      reset: "[PREFIX RESET]\n✅ Reset to default: %1",
-      onlyAdmin: "[PERMISSION DENIED]\n⛔ Only bot admins can change global prefix!",
-      confirmGlobal: "[GLOBAL PREFIX CHANGE]\n⚙️ React to confirm global prefix update.",
-      confirmThisThread: "[CHAT PREFIX CHANGE]\n⚙️ React to confirm this chat's prefix update.",
-      successGlobal: "[PREFIX UPDATED]\n✅ Global prefix: %1",
-      successThisThread: "[PREFIX UPDATED]\n✅ Chat prefix: %1"
+      reset:
+        "┌─『 Prefix Reset 』─┐\n"
+      + "│ ✅ Reset to default: %1\n"
+      + "└────────────────────┘",
+      onlyAdmin:
+        "┌─『 Permission Denied 』─┐\n"
+      + "│ ⛔ Only bot admins can change global prefix!\n"
+      + "└──────────────────────────┘",
+      confirmGlobal:
+        "┌─『 Global Prefix Change 』─┐\n"
+      + "│ ⚙️ React to confirm global prefix update.\n"
+      + "└────────────────────────────┘",
+      confirmThisThread:
+        "┌─『 Chat Prefix Change 』─┐\n"
+      + "│ ⚙️ React to confirm this chat's prefix update.\n"
+      + "└──────────────────────────┘",
+      successGlobal:
+        "┌─『 Prefix Updated 』─┐\n"
+      + "│ ✅ Global prefix: %1\n"
+      + "└─────────────────────┘",
+      successThisThread:
+        "┌─『 Prefix Updated 』─┐\n"
+      + "│ ✅ Chat prefix: %1\n"
+      + "└─────────────────────┘",
+      myPrefix:
+        "┌─『 Current Prefix 』─┐\n"
+      + "│ 🌍 Global: %1\n"
+      + "│ 💬 This Chat: %2\n"
+      + "│\n"
+      + "│ ➤ Type: ${2}help\n"
+      + "└─────────────────────┘"
     }
   },
 
@@ -86,23 +111,13 @@ module.exports = {
     const threadPrefix = await threadsData.get(event.threadID, "data.prefix") || globalPrefix;
 
     if (event.body && event.body.toLowerCase() === "prefix") {
-      const now = new Date();
-      const currentTime = now.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true
-      });
-
       return message.reply({
         body:
-          `[PREFIX INFO]\n\n`
-        + `Global: ${globalPrefix}\n`
-        + `Chat: ${threadPrefix}\n`
-        + `Help: ${threadPrefix}help\n`
-        + `Time: ${currentTime}\n`
-        + `Your ID: ${event.senderID}\n`
-        + `Creator: Arafat Hassan\n`
-        + `Inbox: m.me/arafat.hassan.4315`,
+          "╔══『 𝐏𝐑𝐄𝐅𝐈𝐗 』══╗\n"
+        + `║ 🌍 System : ${globalPrefix}\n`
+        + `║ 💬 Chatbox : ${threadPrefix}\n`
+        + `║ ➤ ${threadPrefix}help to see all available cmds , Admin : Arafat Hassan\n`
+        + "╚═══════════════╝",
         attachment: await utils.getStreamFromURL("https://files.catbox.moe/ilgbyd.jpg")
       });
     }
